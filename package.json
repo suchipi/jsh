@@ -13,14 +13,14 @@
     "caller-id": "^0.1.0",
     "commonjs-standalone": "^0.1.2",
     "make-module-env": "^1.0.1",
-    "prettier": "^2.6.1",
     "pretty-print-error": "^1.1.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "eslint": "^8.12.0",
     "eslint-config-unobtrusive": "^1.2.5",
-    "eslint-plugin-import": "^2.25.4"
+    "eslint-plugin-import": "^2.25.4",
+    "prettier": "^2.6.1"
   },
   "scripts": {
     "link-self": "cd node_modules; mkdir -p @suchipi; cd @suchipi; ln -sf ../.. jsh; cd ../.bin; ln -sf ../../index.js jsh"
