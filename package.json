@@ -23,6 +23,6 @@
     "eslint-plugin-import": "^2.25.4"
   },
   "scripts": {
-    "postinstall": "cd node_modules; mkdir -p @suchipi; cd @suchipi; ln -sf ../.. jsh; cd ../.bin; ln -sf ../../index.js jsh"
+    "link-self": "cd node_modules; mkdir -p @suchipi; cd @suchipi; ln -sf ../.. jsh; cd ../.bin; ln -sf ../../index.js jsh"
   }
 }
