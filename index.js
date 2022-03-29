@@ -5,7 +5,6 @@ const child_process = require("child_process");
 const vm = require("vm");
 const { Module } = require("module");
 const { formatError } = require("pretty-print-error");
-const makeModuleEnv = require("make-module-env");
 const cjs = require("commonjs-standalone");
 const callerId = require("caller-id");
 
@@ -27,7 +26,6 @@ async function main() {
   }
 
   const globals = {
-    ...makeModuleEnv(filename),
     ...builtins,
 
     console,

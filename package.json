@@ -12,7 +12,6 @@
     "@types/node": "^17.0.23",
     "caller-id": "^0.1.0",
     "commonjs-standalone": "^0.1.2",
-    "make-module-env": "^1.0.1",
     "pretty-print-error": "^1.1.1"
   },
   "devDependencies": {
