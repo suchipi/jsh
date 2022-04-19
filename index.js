@@ -8,6 +8,7 @@ const { formatError } = require("pretty-print-error");
 const cjs = require("commonjs-standalone");
 const cjsDelegateNode = require("commonjs-standalone-delegate-node");
 const callerId = require("caller-id");
+const globby = require("globby");
 
 const quote = JSON.stringify.bind(JSON);
 
@@ -71,6 +72,7 @@ async function main() {
     cd: (somePath) => process.chdir(somePath),
     pwd: () => process.cwd(),
     objToArgs,
+    glob: globby.sync.bind(globby),
   };
 
   const context = vm.createContext(globals);

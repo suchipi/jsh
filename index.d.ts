@@ -100,6 +100,20 @@ declare var objToArgs: (
   valueSeparator?: string
 ) => Array<string>;
 
+/**
+ * Resolves a glob string (or set of glob strings) into an array of filesystem paths.
+ *
+ * Example:
+ *
+ * ```ts
+ * const files = glob("./dist/**\/*");
+ * echo(files);
+ * ```
+ *
+ * `glob` is an alias for [globby](https://www.npmjs.com/package/globby) 11's "sync" function.
+ */
+declare var glob: typeof import("globby")["sync"];
+
 declare var assert: typeof import("assert");
 declare var async_hooks: typeof import("async_hooks");
 declare var buffer: typeof import("buffer");

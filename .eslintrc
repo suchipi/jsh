@@ -19,6 +19,8 @@
     "cd": false,
     "rm": false,
     "pwd": false,
+    "objToArgs": false,
+    "glob": false,
 
     "assert": false,
     "async_hooks": false,
