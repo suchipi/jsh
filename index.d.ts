@@ -66,12 +66,22 @@ declare var quote: (input: string) => string;
  * Removes one or more files or folders.
  *
  * Each string in `args` should be either "-rf", "-r", "-f", "-fr", or a
- * filesystem path. Glob strings are *not* supported; use `exec` to run your
- * OS's native `rm` command if you need those (or use a globbing library).
+ * filesystem path. Glob strings are *not* expanded by rm; use {@link glob}
+ * for that.
  *
  * Example:
  * ```ts
- * rm("-rf", "build", "dist");
+ * // Remove one file
+ * rm("README.md");
+ *
+ * // Remove multiple files
+ * rm("README.md", "LICENSE");
+ *
+ * // Remove folders with -rf
+ * rm("-rf", "dist");
+ *
+ * // Removing all files/folders matched by a glob
+ * rm("-rf", ...glob("./dist/**\/*.js"));
  * ```
  */
 declare var rm: (...args: Array<string>) => void;
