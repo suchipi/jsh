@@ -48,6 +48,26 @@ async function main() {
     writeFile: (file, data) => {
       fs.writeFileSync(file, data);
     },
+    rm: (...args) => {
+      const options = {};
+      const targets = [];
+      for (const arg of args) {
+        if (arg === "-rf" || arg === "-fr") {
+          options.recursive = true;
+          options.force = true;
+        } else if (arg === "-r") {
+          options.recursive = true;
+        } else if (arg === "-f") {
+          options.force = true;
+        } else {
+          targets.push(arg);
+        }
+      }
+
+      for (const target of targets) {
+        fs.rmSync(target, options);
+      }
+    },
     cd: (somePath) => process.chdir(somePath),
     pwd: () => process.cwd(),
     objToArgs,

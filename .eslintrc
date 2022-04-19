@@ -17,6 +17,7 @@
     "writeFile": false,
     "quote": false,
     "cd": false,
+    "rm": false,
     "pwd": false,
 
     "assert": false,

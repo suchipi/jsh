@@ -63,6 +63,20 @@ declare var writeFile: (file: string, data: string | Buffer) => void;
 declare var quote: (input: string) => string;
 
 /**
+ * Removes one or more files or folders.
+ *
+ * Each string in `args` should be either "-rf", "-r", "-f", "-fr", or a
+ * filesystem path. Glob strings are *not* supported; use `exec` to run your
+ * OS's native `rm` command if you need those (or use a globbing library).
+ *
+ * Example:
+ * ```ts
+ * rm("-rf", "build", "dist");
+ * ```
+ */
+declare var rm: (...args: Array<string>) => void;
+
+/**
  * Changes the current working directory for all commands.
  */
 declare var cd: (somePath: string) => void;
