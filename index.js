@@ -6,6 +6,7 @@ const vm = require("vm");
 const { Module } = require("module");
 const { formatError } = require("pretty-print-error");
 const cjs = require("commonjs-standalone");
+const cjsDelegateNode = require("commonjs-standalone-delegate-node");
 const callerId = require("caller-id");
 
 const quote = JSON.stringify.bind(JSON);
@@ -54,36 +55,7 @@ async function main() {
 
   const context = vm.createContext(globals);
 
-  const cjsDelegate = {
-    resolve(id, fromFilePath) {
-      const parent = new Module(fromFilePath, null);
-      parent.filename = fromFilePath;
-      return Module._resolveFilename(id, parent, false);
-    },
-
-    read(filepath) {
-      let code = fs.readFileSync(filepath, "utf-8");
-
-      if (code.charAt(0) === 0xfeff) {
-        code = code.slice(1);
-      }
-
-      return code.replace(/^#![^\n]+\n/, "\n");
-    },
-
-    run(code, moduleEnv, filepath) {
-      const wrapper = vm.runInContext(Module.wrap(code), context, {
-        filename: filepath,
-      });
-      wrapper(
-        moduleEnv.exports,
-        moduleEnv.require,
-        moduleEnv.module,
-        moduleEnv.__filename,
-        moduleEnv.__dirname
-      );
-    },
-  };
+  const cjsDelegate = cjsDelegateNode.makeDelegate(context);
 
   cjs.requireMain(filename, cjsDelegate);
 }

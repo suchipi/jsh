@@ -11,7 +11,8 @@
   "dependencies": {
     "@types/node": "^17.0.23",
     "caller-id": "^0.1.0",
-    "commonjs-standalone": "^0.1.2",
+    "commonjs-standalone": "^0.2.0",
+    "commonjs-standalone-delegate-node": "^0.2.0",
     "pretty-print-error": "^1.1.1"
   },
   "devDependencies": {
